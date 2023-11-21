@@ -1,0 +1,81 @@
+@import url(./reset.css);
+
+.newGameForm {
+  height: 100vh;
+  max-width: 42rem;
+  margin: 0 auto;
+  border-radius: 0.8rem;
+  display: grid;
+  place-content: center;
+}
+
+.newGameHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2.8rem;
+}
+
+.newGameHeader img {
+  width: 100%;
+  margin-top: 2.4rem;
+  filter: drop-shadow(2px 2px 2px black);
+}
+
+.newGameHeader h1 {
+  font-size: clamp(2rem, 6vw, 2.4rem);
+  white-space: nowrap;
+  text-align: center;
+  color: #e8d141;
+  margin-top: 0.8rem;
+  text-shadow: 2px 2px 2px black;
+}
+
+.inputName {
+  width: 100%;
+  font-size: 1.6rem;
+  border: solid 2px #aaa;
+  border-radius: 8px;
+  padding: 1.6rem;
+}
+
+.inputName::placeholder {
+  color: #aaa;
+}
+
+.newGameButton {
+  width: 100%;
+  font-size: 1.6rem;
+  background: linear-gradient(200deg, #056cf2,#2793f2);
+  border-radius: 8px;
+  padding: 1.6rem;
+  text-shadow: 1px 1px 2px #0008;
+  margin-top: 1.6rem;
+  transition: filter 200ms;
+}
+
+.newGameButton:hover {
+  cursor: pointer;
+  filter: brightness(1.1);
+}
+
+.newGameButton:disabled {
+  background: #aaa;
+  color: #ddd;
+  cursor: not-allowed;
+  filter: none;
+}
+
+.buttonRank{
+  font-size: 1.6rem;
+  margin:2.4rem auto 0;
+  display: block;
+  padding: 1.6rem;
+  border-radius: 8px;
+}
+
+.buttonRank:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
