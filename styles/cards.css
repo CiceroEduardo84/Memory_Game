@@ -79,11 +79,11 @@ aside button {
 
 @media (min-width: 768px) {
   main{
-    min-width: 92rem;
+    min-width: 100rem;
   }
 
   .gridCard{
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(8, 1fr);
     gap: 1.6rem;
     margin-top: 2.4rem;
   }
