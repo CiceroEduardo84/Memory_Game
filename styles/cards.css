@@ -43,10 +43,10 @@ aside button {
 
 .card:hover {
   cursor: pointer;
+  transform: rotatey(180deg);
 }
 
 .flipCard{
-  transform: rotatey(180deg);
 }
 
 .card div{
