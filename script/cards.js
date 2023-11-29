@@ -55,6 +55,32 @@ function createCards() {
   });
 }
 
+function checkGameWin() {
+  const disabledCars = document.querySelectorAll(".disabledCard");
+
+  if (disabledCars.length === 2) {
+    clearInterval(finishTimerInterval);
+
+    const userData = {
+      name: storagePlayerName,
+      time: timer.textContent,
+    };
+
+    const storageRank = JSON.parse(localStorage.getItem("@memoryGame:rank"));
+
+    if (storageRank) {
+      const rankData = [...storageRank, userData];
+      localStorage.setItem("@memoryGame:rank", JSON.stringify(rankData));
+    } else {
+      localStorage.setItem("@memoryGame:rank", JSON.stringify([userData]));
+    }
+    
+    alert(
+      `Parabéns ${storagePlayerName}, você venceu com o tempo de ${timer.innerHTML}!`
+    );
+  }
+}
+
 function checkMathCards() {
   if (firstCard.getAttribute("name") === secondCard.getAttribute("name")) {
     new Audio("../audios/sci-fi.wav").play();
@@ -63,6 +89,8 @@ function checkMathCards() {
       secondCard.classList.add("disabledCard");
       firstCard = "";
       secondCard = "";
+
+      checkGameWin();
     }, 500);
   } else {
     setTimeout(() => {
@@ -96,9 +124,22 @@ function clickFlipCard() {
   });
 }
 
+function setStartTimer() {
+  finishTimerInterval = setInterval(() => {
+    const dateNow = new Date();
+    const dateDiff = new Date(dateNow - initialDateTime);
+    const minutes = String(dateDiff.getMinutes()).padStart("2", "0");
+    const seconds = String(dateDiff.getSeconds()).padStart("2", "0");
+
+    timer.innerHTML = `${minutes}:${seconds}`;
+  }, 1000);
+}
+
 const playerName = document.querySelector(".playerName");
 const backButton = document.querySelector(".backButton");
 const gridCards = document.querySelector(".gridCards");
+const timer = document.querySelector(".timer");
+
 const storagePlayerName = localStorage.getItem("@memoryGame:playerName");
 
 playerName.innerHTML = storagePlayerName;
@@ -109,3 +150,7 @@ createCards();
 let firstCard = "";
 let secondCard = "";
 clickFlipCard();
+
+const initialDateTime = new Date();
+let finishTimerInterval;
+setStartTimer();
