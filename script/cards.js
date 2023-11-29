@@ -58,7 +58,7 @@ function createCards() {
 function checkGameWin() {
   const disabledCars = document.querySelectorAll(".disabledCard");
 
-  if (disabledCars.length === 2) {
+  if (disabledCars.length === 24) {
     clearInterval(finishTimerInterval);
 
     const userData = {
