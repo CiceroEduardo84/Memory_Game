@@ -79,7 +79,7 @@ aside button {
 
 @media (min-width: 768px) {
   main {
-    min-width: 100rem;
+    max-width: 100rem;
   }
 
   .gridCards {
