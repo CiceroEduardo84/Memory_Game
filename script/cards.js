@@ -1,10 +1,14 @@
 function backPage() {
-  const playerResp = confirm(
-    "Deseja sair do jogo? Você perderá seu progresso!"
-  );
-
-  if (playerResp) {
+  if (gameIsFinished) {
     window.history.back();
+  } else {
+    const playerResp = confirm(
+      "Deseja sair do jogo? Você perderá seu progresso!"
+    );
+
+    if (playerResp) {
+      window.history.back();
+    }
   }
 }
 
@@ -60,6 +64,7 @@ function checkGameWin() {
 
   if (disabledCars.length === 24) {
     clearInterval(finishTimerInterval);
+    gameIsFinished = true;
 
     const userData = {
       name: storagePlayerName,
@@ -74,10 +79,11 @@ function checkGameWin() {
     } else {
       localStorage.setItem("@memoryGame:rank", JSON.stringify([userData]));
     }
-    
+
     alert(
       `Parabéns ${storagePlayerName}, você venceu com o tempo de ${timer.innerHTML}!`
     );
+    backPage();
   }
 }
 
@@ -147,6 +153,7 @@ backButton.addEventListener("click", backPage);
 
 createCards();
 
+let gameIsFinished = false;
 let firstCard = "";
 let secondCard = "";
 clickFlipCard();
