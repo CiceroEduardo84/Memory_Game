@@ -12,4 +12,4 @@ Este projeto foi desenvolvido na conclusão do módulo de JavaScript do curso de
 
 ## Links
 
-- [Deploy](https://emanuelquintino.github.io/Memory-Game/)
+- [Deploy](https://ciceroeduardo24.github.io/Memory_Game/)
